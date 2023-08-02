@@ -2,7 +2,7 @@
 const User = require("../pkg/users/userSchema");
 
 //* Packages
-const jwt = require("express-jwt");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 //* Register function

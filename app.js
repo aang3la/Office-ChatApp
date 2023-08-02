@@ -18,6 +18,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+//* Connecting with the database
 db.init();
 
 app.use(jwt.expressjwt({
@@ -33,9 +34,19 @@ app.use(jwt.expressjwt({
         return null;
     }})
     .unless({
-        path: ["/default", "/register", "/login"]
+        path: ["/api/register", "/api/login"]
     })
 );
+
+//* Authentication routes
+app.post("/api/register", authHandler.register);
+app.post("/api/login", authHandler.login);
+
+//* Posts handler routes
+
+//* View routes
+
+
 
 app.listen(process.env.PORT, (err) => {
     if(err){
