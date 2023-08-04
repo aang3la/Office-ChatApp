@@ -43,9 +43,15 @@ app.post("/api/register", authHandler.register);
 app.post("/api/login", authHandler.login);
 
 //* Posts handler routes
+app.get("/posts", postsHandler.allPosts);
+app.get("/myposts", postsHandler.myPosts);
+app.post("/posts", postsHandler.createMyPost);
+app.patch("/posts/:id", postsHandler.updatePost);
+app.delete("/posts/:id", postsHandler.deletePost);
 
 //* View routes
-
+app.get("/register", viewHandler.getRegisterForm);
+app.get("/login", viewHandler.getLoginForm);
 
 
 app.listen(process.env.PORT, (err) => {
