@@ -22,12 +22,19 @@ exports.register = async (req, res) => {
             {expiresIn: process.env.JWT_EXPIRES}
         );
 
+        // Generating cookies
+        res.cookie("jwt", token, {
+              expires: new Date(
+                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+              ),
+              secure: false,
+              httpOnly: true,
+        });
+
         res.status(201).json({
             status: "Success",
             token,
-            data: {
-                user: newUser
-            }
+            data: {user: newUser}
         });
     }
     catch(err){
