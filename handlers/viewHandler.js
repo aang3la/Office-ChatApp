@@ -18,6 +18,7 @@ exports.getLoginForm = (req, res) => {
     try{
         res.status(200).render("login", {
             title: "The Office Chat App",
+            subtitle: "USER LOGIN" 
         });
     }
     catch(err){

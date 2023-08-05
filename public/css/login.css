@@ -1,11 +1,20 @@
 body {
-    background-color: rgb(186, 247, 247);
+    background-image: linear-gradient(to right, rgb(206, 206, 255), rgb(154, 154, 234));
+    font-family: 'Mulish', sans-serif;
+    font-family: 'Questrial', sans-serif;
 }
 
 h1 {
-    color: rgb(244, 115, 115);
+    color: rgb(143, 96, 118);
     text-align: center;
-    padding: 50px;
+    padding: 40px;
+}
+
+h2 {
+    color: rgb(82, 82, 82);
+    text-align: center;
+    padding-bottom: 30px;
+    font-size: 17px;
 }
 
 .login-container{
@@ -17,12 +26,12 @@ h1 {
 
 .login-form {
     display: grid;
-    grid-gap: 70px;
+    grid-gap: 60px;
 }
 
 .login-form input {
     width: 100%;
-    border: none;
+    border: 1px solid rgb(143, 96, 118);
     border-radius: 40px;
     padding: 17px;
 }
@@ -35,21 +44,16 @@ h1 {
     border-radius: 40px;
     padding: 13px;
     background-color: white;
-    color: rgb(244, 115, 115);
+    color: rgb(143, 96, 118);
 }
 
 @media (max-width: 767px) {
-    h1 {
-        font-size: 27px;
-    }
-
     .login-container {
         width: 70%;
     }
   
     form {
       grid-template-columns: 1fr;
-      grid-gap: 30px;
     }
 }
 
