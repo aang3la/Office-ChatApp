@@ -34,7 +34,7 @@ app.use(jwt.expressjwt({
         return null;
     }})
     .unless({
-        path: ["/api/register", "/api/login", "/register", "/login"]
+        path: ["/api/register", "/api/login", "/register", "/login", "/homepage"]
     })
 );
 
@@ -52,6 +52,7 @@ app.delete("/posts/:id", postsHandler.deletePost);
 //* View routes
 app.get("/register", viewHandler.getRegisterForm);
 app.get("/login", viewHandler.getLoginForm);
+app.get("/homepage", viewHandler.postsView);
 
 
 app.listen(process.env.PORT, (err) => {

@@ -1,0 +1,89 @@
+body {
+    background-image: linear-gradient(to right, rgb(206, 206, 255), rgb(154, 154, 234));
+    font-family: 'Mulish', sans-serif;
+    font-family: 'Questrial', sans-serif;
+}
+
+.top-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1{
+    color:  rgb(143, 96, 118);
+    font-size: 18px;
+}
+
+.icons img {
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+}
+
+@media (max-width: 767px) {
+    .top-container {
+        width: 100%;
+    }
+    h1 {
+        font-size: 13px;
+    }
+    .icons img {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.sec-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sec-container img {
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+}
+
+@media (max-width: 767px) {
+    .top-container {
+        width: 100%;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    .icons img {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+form {
+    width: 90%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    border: none;
+    border-radius: 30px;
+    padding: 17px;
+}
+
+form button {
+    margin: 0 auto;
+    width: 30%;
+    min-width: 120px;
+    border: none;
+    border-radius: 40px;
+}

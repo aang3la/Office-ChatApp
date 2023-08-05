@@ -47,6 +47,12 @@ h2 {
     color: rgb(143, 96, 118);
 }
 
+.login-form button:hover{
+    cursor: pointer;
+    background-color: rgb(143, 96, 118);
+    color: white;
+}
+
 @media (max-width: 767px) {
     .login-container {
         width: 70%;

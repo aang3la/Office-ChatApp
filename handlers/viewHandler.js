@@ -26,3 +26,30 @@ exports.getLoginForm = (req, res) => {
     }
 };
 
+//* Homepage
+exports.postsView = async (req, res) => {
+    try{
+        const posts = await Post.find();
+
+        res.status(200).render("homepage", {
+            status: "success",
+            title: "The Office Chat App",
+            subtitle: "Welcome to the news feed",
+            posts,
+        });
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+};
+
+//* Create post
+exports.createPost = async (req, res) => {
+    try{
+        await Post.create(req.body);
+        res.redirect("/homepage");
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+}

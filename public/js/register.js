@@ -10,7 +10,7 @@ const register = async (name, email, password) => {
             }
         });
         console.log(res);
-        window.location.href = "/api/login"; //check this!
+        window.location.href = "/login"; 
     }
     catch(err) {
         console.log(err);

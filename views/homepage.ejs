@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Questrial&display=swap" rel="stylesheet">
+
     <title>Homepage</title>
 </head>
 <body>
-    
+    <div class="top-container">
+        <div class="title">
+        <h1><%= title %></h1>
+        </div>
+        <div class="icons">
+            <img src="https://icon-library.com/images/plus-icon-png/plus-icon-png-1.jpg"/>
+            <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png"/>
+        </div>
+    </div>
+    <div class="sec-container">
+        <h2><%= subtitle %></h2>
+        <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png"/>
+    </div> <hr>
+
+    <form action="/createPost" method="POST">
+        <input type="text" id="text" placeholder="What's on your mind?" required/>
+        <button type="submit" class="post-btn" name="createPost">Post</button>
+    </form>
+
+    <% if(posts.length === 0) { %>
+        <p>No posts found at this moment.</p>
+    <% } else { %>
+        <% posts.forEach(post => { %>
+            <div class="post">
+                <a href="/homepage/<%=post._id%>">
+                    <h2 class="post-author"><%=post.author %></h2>
+                </a>
+                <p><%= post.text %></p>
+            </div>
+
+            <a href="/deletePost/<%=post._id%>">
+                <img src="/logos/delete.png"/>
+            </a>
+        <% }) %>
+    <%}%>
 </body>
 </html>

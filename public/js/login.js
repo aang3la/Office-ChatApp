@@ -9,7 +9,7 @@ const login = async (email, password) => {
             }
         });
         console.log(res);
-        window.location.href = ""; //put url here
+        window.location.href = "/homepage";
     }
     catch(err){
         console.log(err);
