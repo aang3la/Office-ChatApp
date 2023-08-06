@@ -50,9 +50,11 @@ app.patch("/posts/:id", postsHandler.updatePost);
 app.delete("/posts/:id", postsHandler.deletePost);
 
 //* View routes
+app.get("/default", viewHandler.getDefaultPage);
 app.get("/register", viewHandler.getRegisterForm);
 app.get("/login", viewHandler.getLoginForm);
 app.get("/homepage", viewHandler.postsView);
+app.post("/createpost", viewHandler.createPost);
 
 
 app.listen(process.env.PORT, (err) => {

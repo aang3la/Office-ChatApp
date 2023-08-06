@@ -1,5 +1,17 @@
 const Post = require("../pkg/posts/postsSchema");
 
+//* Default page
+exports.getDefaultPage = (req, res) => {
+    try{
+        res.status(200).render("default", {
+           title: "Welcome to The Office Chat App",
+        });
+    }
+    catch(err){
+        res.status(500).send("Error");
+    }
+};
+
 //* Register form
 exports.getRegisterForm = (req, res) => {
     try{

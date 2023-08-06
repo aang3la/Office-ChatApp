@@ -1,0 +1,39 @@
+body {
+    background-image: linear-gradient(to right, rgb(206, 206, 255), rgb(154, 154, 234));
+    font-family: 'Mulish', sans-serif;
+    font-family: 'Questrial', sans-serif;
+}
+
+h1 {
+    color: rgb(143, 96, 118);
+    text-align: center;
+    padding: 60px;
+}
+
+.btn-container {
+    margin: 0 auto;  
+    width: 100%;
+    max-width: 500px;
+    min-width: 150px;
+}
+
+.buttons {
+    display: grid;
+    grid-gap: 60px;
+}
+
+button {
+    width: 100%;
+    min-width: 100px;
+    border: none;
+    border-radius: 40px;
+    padding: 13px;
+    background-color: white;
+    color: rgb(143, 96, 118);
+}
+
+@media (max-width: 767px) {
+    .btn-container {
+        width: 70%;
+    }
+}
