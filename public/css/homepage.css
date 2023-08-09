@@ -18,7 +18,7 @@ h1{
     font-size: 18px;
 }
 
-.icons img {
+.icons img, #delete-icon {
     width: 15px;
     height: 15px;
     padding: 3px;
@@ -67,14 +67,19 @@ h1{
 
 form {
     width: 90%;
+    margin: 0 auto;
+    max-width: 900px;
+    min-width: 170px;  
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 25px;
 }
 
 form input {
+    width: 80%;
     border: none;
     border-radius: 30px;
     padding: 17px;
@@ -82,8 +87,29 @@ form input {
 
 form button {
     margin: 0 auto;
-    width: 30%;
-    min-width: 120px;
+    width: 20%;
+    max-width: 100px;
+    min-width: 70px;
     border: none;
     border-radius: 40px;
+    padding: 5px;
+    background-color: white;
+}
+
+.posts-container {
+    margin: 0 auto;  
+    width: 100%;
+    max-width: 500px;
+    min-width: 100px;
+}
+
+.post {
+    display: grid;
+    grid-gap: 80px;
+    width: 100%;
+    min-width: 100px;
+    border: none;
+    border-radius: 40px;
+    padding: 13px;
+    background-color: white;
 }

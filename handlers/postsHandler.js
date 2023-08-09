@@ -18,12 +18,23 @@ exports.allPosts = async(req, res) => {
         })
     }
     catch(err){
-        res.status(404).json({
-            status: "Fail",
-            message: err
-        });
+        res.status(500).json({ error: err });
     }
 };
+
+//* Show one post
+exports.getOne = async (req, res) => {
+    try{
+        const post = await Post.findById(req.params.id);
+        res.status(200).json({
+            status: "Success",
+            data: {post}
+        });
+    }
+    catch(err){
+        res.status(500).json({ error: err });
+    }
+}
 
 //* Show only MY posts
 exports.myPosts = async (req, res) => {
@@ -55,7 +66,7 @@ exports.createMyPost = async (req, res) => {
 exports.updatePost = async (req, res) => {
     try{
         const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
-            new: true.valueOf,
+            new: true,
             runValidators: true,
         });
 

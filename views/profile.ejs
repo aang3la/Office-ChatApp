@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Questrial&display=swap" rel="stylesheet">
+
+    <title>My profile</title>
+</head>
+<body>
+    <div class="top-container">
+        <div class="title">
+        <h1><%= title %></h1>
+        </div>
+        <div class="icons">
+            <a href="/homepage"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="homepage-icon"/></a>
+            <a href="/login"><img src="https://www.svgrepo.com/show/132889/logout.svg" alt="logout-icon"/></a>
+        </div>
+    </div>
+
+    <% if(myPosts.length === 0) { %>
+        <p>You haven't posted any posts yet.</p>
+    <% } else { %>
+        <% myPosts.forEach(mypost => { %>
+            <div class="post">
+                <a href="/profile/<%=mypost._id%>">
+                    <h2 class="post-author"><%=post.author %></h2>
+                </a>
+                <p><%= mypost.text %></p>
+            </div>
+
+            <a href="/updatePost/<%=post._id%>">
+                <img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit-icon"/>
+            </a>
+
+            <a href="/deletePost/<%=post._id%>">
+                <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete-icon"/>
+            </a>
+        <% }) %>
+    <%}%>
+</body>
+</html>

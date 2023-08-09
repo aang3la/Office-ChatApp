@@ -16,34 +16,38 @@
         <h1><%= title %></h1>
         </div>
         <div class="icons">
-            <img src="https://icon-library.com/images/plus-icon-png/plus-icon-png-1.jpg"/>
-            <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png"/>
+            <a href="/createPost"><img src="https://icon-library.com/images/plus-icon-png/plus-icon-png-1.jpg" alt="add-post-icon"/></a>
+            <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="search-icon"/>
         </div>
     </div>
     <div class="sec-container">
         <h2><%= subtitle %></h2>
-        <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png"/>
+        <a href="/profile"><img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" alt="profile-icon"/></a>
     </div> <hr>
 
     <form action="/createPost" method="POST">
         <input type="text" id="text" placeholder="What's on your mind?" required/>
-        <button type="submit" class="post-btn" name="createPost">Post</button>
+        <button class="post-btn" type="submit" name="createPost">Post</button>
     </form>
 
     <% if(posts.length === 0) { %>
         <p>No posts found at this moment.</p>
     <% } else { %>
         <% posts.forEach(post => { %>
-            <div class="post">
-                <a href="/homepage/<%=post._id%>">
-                    <h2 class="post-author"><%=post.author %></h2>
-                </a>
-                <p><%= post.text %></p>
-            </div>
+            <section class="posts-container">
+                <div class="post">
+                    <a href="/homepage/<%=post._id%>">
+                        <h2 class="post-author"><%=post.author %></h2>
+                    </a>
+                    <div class="post-status">
+                    <p><%= post.text %></p>
+                    </div>
 
-            <a href="/deletePost/<%=post._id%>">
-                <img src="/logos/delete.png"/>
-            </a>
+                    <a href="/deletePost/<%=post._id%>">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" id="delete-icon" alt="delete-icon"/>
+                    </a>
+                </div>
+            </section>
         <% }) %>
     <%}%>
 </body>

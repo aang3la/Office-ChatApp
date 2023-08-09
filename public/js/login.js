@@ -6,7 +6,7 @@ const login = async (email, password) => {
             data: {
                 email,
                 password
-            }
+            },
         });
         console.log(res);
         window.location.href = "/homepage";

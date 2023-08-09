@@ -64,4 +64,43 @@ exports.createPost = async (req, res) => {
     catch(err){
         res.status(500).send(err);
     }
+};
+
+//* Update post
+exports.updatePost = async (req, res) => {
+    try{
+        await Post.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect("/homepage/" + req.params.id);
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
 }
+
+//* Delete post
+exports.deletePost = async (req, res) => {
+    try{
+        const postId = req.params.id;
+        await Post.findByIdAndDelete(postId);
+        res.redirect("/homepage");
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+}
+
+//* My profile
+exports.myProfile = async (req, res) => {
+    try{
+        const myPosts = await Post.find({ author: userId });
+
+        res.status(200).render("profile", {
+            status: "success",
+            title: "My Profile",
+            myPosts,
+        });
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+};
