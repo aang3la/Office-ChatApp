@@ -40,7 +40,7 @@ exports.getOne = async (req, res) => {
 exports.myPosts = async (req, res) => {
     try{
         const userId = req.auth.id;
-        const minePosts = await Post.find({author: userId});
+        const minePosts = await Post.find({author: userId}).populate("author");
         res.status(201).json(minePosts);
     }
     catch(err){
@@ -65,14 +65,14 @@ exports.createMyPost = async (req, res) => {
 //* Make changes in the post
 exports.updatePost = async (req, res) => {
     try{
-        const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
+        const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
         });
 
         res.status(200).json({
             status: "Success",
-            data: post
+            data: updatedPost
         });
     }
     catch(err){

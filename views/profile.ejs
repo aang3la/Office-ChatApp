@@ -26,17 +26,15 @@
     <% } else { %>
         <% myPosts.forEach(mypost => { %>
             <div class="post">
-                <a href="/profile/<%=mypost._id%>">
-                    <h2 class="post-author"><%=post.author %></h2>
-                </a>
-                <p><%= mypost.text %></p>
+                <h2 class="post-author"><%=mypost.authorName %></h2>
+                <p><%= mypost.postContent %></p>
             </div>
 
-            <a href="/updatePost/<%=post._id%>">
+            <a href="/updatePost/<%=mypost.postId%>">
                 <img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit-icon"/>
             </a>
 
-            <a href="/deletePost/<%=post._id%>">
+            <a href="/deletePost/<%=mypost.postId%>">
                 <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete-icon"/>
             </a>
         <% }) %>

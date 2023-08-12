@@ -1,4 +1,5 @@
 const Post = require("../pkg/posts/postsSchema");
+const User = require("../pkg/users/userSchema");
 
 //* Default page
 exports.getDefaultPage = (req, res) => {
@@ -38,16 +39,35 @@ exports.getLoginForm = (req, res) => {
     }
 };
 
+function findAuthorById(authors, authorId){
+    return authors.findOne(authorId);
+}
+
 //* Homepage
 exports.postsView = async (req, res) => {
     try{
         const posts = await Post.find();
+        //const authors = await User.find();
+
+        let combined = [];
+        for(let i = 0; i < posts.length; i++){
+            let id = posts[i].author.toString();
+            //var author = findAuthorById(authors, id);
+            let author = await User.findById(id);
+            let post = posts[i];
+            let newItem = {
+                postId: post._id,
+                postContent: post.text,
+                authorName: author.name
+            };
+            combined.push(newItem);
+        }
 
         res.status(200).render("homepage", {
             status: "success",
             title: "The Office Chat App",
             subtitle: "Welcome to the news feed",
-            posts,
+            posts: combined
         });
     }
     catch(err){
@@ -58,7 +78,10 @@ exports.postsView = async (req, res) => {
 //* Create post
 exports.createPost = async (req, res) => {
     try{
-        await Post.create(req.body);
+        await Post.create({
+            text: req.body.text,
+            author: req.auth.id,
+        });
         res.redirect("/homepage");
     }
     catch(err){
@@ -92,15 +115,38 @@ exports.deletePost = async (req, res) => {
 //* My profile
 exports.myProfile = async (req, res) => {
     try{
-        const myPosts = await Post.find({ author: userId });
+        const posts = await Post.find({ author: req.auth.id });
+
+        let combined = [];
+        for(let i = 0; i < posts.length; i++){
+            let id = posts[i].author.toString();
+            let author = await User.findById(id);
+            let post = posts[i];
+            let newItem = {
+                postId: post._id,
+                postContent: post.text,
+                authorName: author.name
+            };
+            combined.push(newItem);
+        }
 
         res.status(200).render("profile", {
             status: "success",
             title: "My Profile",
-            myPosts,
+            myPosts: combined,
         });
     }
     catch(err){
         res.status(500).send(err);
     }
 };
+
+exports.getPost = async (req, res) => {
+    try{
+        const postId = req.params.id;
+        res.redirect("/posts/" + postId);
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+}

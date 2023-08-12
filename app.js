@@ -34,7 +34,7 @@ app.use(jwt.expressjwt({
         return null;
     }})
     .unless({
-        path: ["/api/register", "/api/login", "/register", "/login", "/homepage", "/profile"]
+        path: ["/api/register", "/api/login", "/register", "/login"]
     })
 );
 
@@ -44,7 +44,7 @@ app.post("/api/login", authHandler.login);
 
 //* Posts handler routes
 app.get("/posts", postsHandler.allPosts);
-app.get("/posts/:id", postsHandler.getOne)
+app.get("/posts/:id", postsHandler.getOne);
 app.get("/myposts", postsHandler.myPosts);
 app.post("/mypost", postsHandler.createMyPost);
 app.patch("/posts/:id", postsHandler.updatePost);
@@ -57,6 +57,7 @@ app.get("/login", viewHandler.getLoginForm);
 app.get("/homepage", viewHandler.postsView);
 app.post("/createPost", viewHandler.createPost);
 app.get("/deletePost/:id", viewHandler.deletePost);
+app.get("/updatePost/:id", viewHandler.getPost);
 app.post("/updatePost/:id", viewHandler.updatePost);
 app.get("/profile", viewHandler.myProfile);
 

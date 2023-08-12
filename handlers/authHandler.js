@@ -72,7 +72,7 @@ exports.login = async (req, res) => {
 
         // Send the cookies with the token
         res.cookie("jwt", token, {
-            expires: new Date(Date.now() + process.env.JWT_EXPIRES * 24 * 60 * 60 * 1000),
+            expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
             secure: false,
             httpOnly: true
         });
@@ -80,7 +80,8 @@ exports.login = async (req, res) => {
         // Send the token
         res.status(201).json({
             status: "Success",
-            token
+            token,
+            data: {user: user}
         });
     }
     catch(err){

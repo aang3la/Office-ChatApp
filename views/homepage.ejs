@@ -26,8 +26,8 @@
     </div> <hr>
 
     <form action="/createPost" method="POST">
-        <input type="text" id="text" placeholder="What's on your mind?" required/>
-        <button class="post-btn" type="submit" name="createPost">Post</button>
+        <input type="text" name="text" id="text" placeholder="What's on your mind?" required/>
+        <button class="post-btn" type="submit">Post</button>
     </form>
 
     <% if(posts.length === 0) { %>
@@ -36,16 +36,10 @@
         <% posts.forEach(post => { %>
             <section class="posts-container">
                 <div class="post">
-                    <a href="/homepage/<%=post._id%>">
-                        <h2 class="post-author"><%=post.author %></h2>
-                    </a>
+                    <h2 class="post-author"><%=post.authorName %></h2>
                     <div class="post-status">
-                    <p><%= post.text %></p>
+                    <p><%= post.postContent %></p>
                     </div>
-
-                    <a href="/deletePost/<%=post._id%>">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" id="delete-icon" alt="delete-icon"/>
-                    </a>
                 </div>
             </section>
         <% }) %>
