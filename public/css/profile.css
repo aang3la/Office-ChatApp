@@ -1,0 +1,78 @@
+body {
+    background-image: linear-gradient(to right, rgb(206, 206, 255), rgb(154, 154, 234));
+    font-family: 'Mulish', sans-serif;
+    font-family: 'Questrial', sans-serif;
+}
+
+.icons img {
+    width: 17px;
+    height: 17px;
+    padding: 8px;
+}
+
+.title {
+    text-align: center;
+    color:  rgb(143, 96, 118);
+    font-size: 18px;
+}
+
+.profile, img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 200px;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.post img {
+    width: 17px;
+    height: 17px;
+    padding: 8px;
+}
+
+.myposts-container {
+    margin: 0 auto;  
+    padding: 30px;
+    width: 100%;
+    max-width: 950px;
+    min-width: 200px;
+}
+
+.post {
+    width: 100%;
+    padding: 30px 0 30px 60px;
+    border: none;
+    border-radius: 90px;
+    background-color: white;
+    position: relative;
+}
+
+.post h2 {
+    font-size: 20px;
+    color:  rgb(143, 96, 118);
+}
+
+.post-icons {
+    float: right;
+}
+
+@media (max-width: 767px) {
+    .myposts-container {
+        width: 80%;
+    }
+    .post h2, .title {
+        font-size: 15px;
+    }
+    .post {
+        padding: 15px 5px 15px 30px;
+    }
+    .profile, img {
+        width: 70%;
+    }
+}
+
+@media (min-width: 768px) {
+    .myposts-container {
+        width: 80%;
+    }
+  }

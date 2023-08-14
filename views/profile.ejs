@@ -12,31 +12,38 @@
 </head>
 <body>
     <div class="top-container">
-        <div class="title">
-        <h1><%= title %></h1>
-        </div>
         <div class="icons">
             <a href="/homepage"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="homepage-icon"/></a>
             <a href="/login"><img src="https://www.svgrepo.com/show/132889/logout.svg" alt="logout-icon"/></a>
         </div>
+        <div class="title">
+        <h1><%= title %></h1><hr>
+        </div>
+    </div>
+
+    <div class="profile">
+        <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="/>
     </div>
 
     <% if(myPosts.length === 0) { %>
         <p>You haven't posted any posts yet.</p>
     <% } else { %>
         <% myPosts.forEach(mypost => { %>
-            <div class="post">
-                <h2 class="post-author"><%=mypost.authorName %></h2>
-                <p><%= mypost.postContent %></p>
-            </div>
-
-            <a href="/updatePost/<%=mypost.postId%>">
-                <img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit-icon"/>
-            </a>
-
-            <a href="/deletePost/<%=mypost.postId%>">
-                <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete-icon"/>
-            </a>
+            <section class="myposts-container">
+                <div class="post">
+                    <h2 class="post-author"><%=mypost.authorName %></h2>
+                    <p><%= mypost.postContent %></p>
+                    
+                    <div class="post-icons">
+                        <a href="/updatePost/<%=mypost.postId%>">
+                            <img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit-icon"/>
+                        </a>
+                        <a href="/deletePost/<%=mypost.postId%>">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete-icon"/>
+                        </a>
+                    </div>
+                </div>
+            </section>
         <% }) %>
     <%}%>
 </body>

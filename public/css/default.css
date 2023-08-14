@@ -32,6 +32,12 @@ button {
     color: rgb(143, 96, 118);
 }
 
+button:hover{
+    cursor: pointer;
+    background-color: rgb(143, 96, 118);
+    color: white;
+}
+
 @media (max-width: 767px) {
     .btn-container {
         width: 70%;
