@@ -120,6 +120,11 @@ form button {
     color:  rgb(143, 96, 118);
 }
 
+.time {
+    font-size: 8px;
+    padding-bottom: 10px;
+}
+
 @media (max-width: 767px) {
     form input {
         width: 70%;
@@ -141,6 +146,9 @@ form button {
     }
     .post {
         padding: 15px 5px 15px 30px;
+    }
+    .time {
+        font-size: 6px;
     }
 }
 

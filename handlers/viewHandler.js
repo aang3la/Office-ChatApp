@@ -58,7 +58,8 @@ exports.postsView = async (req, res) => {
             let newItem = {
                 postId: post._id,
                 postContent: post.text,
-                authorName: author.name
+                authorName: author.name,
+                time: post.time
             };
             combined.push(newItem);
         }
@@ -150,3 +151,23 @@ exports.getPost = async (req, res) => {
         res.status(500).send(err);
     }
 }
+
+//* View post details
+exports.viewPostDetails = async (req, res) => {
+    try{
+        const post = await Post.findById(req.params.id);
+        console.log(post);
+
+        if(!post){
+            res.status(404).send("The post is not found.")
+        } else {
+            res.status(200).render("postDetails", {
+                status: "Success",
+                post,
+            });
+        }
+    }
+    catch(err){
+        res.status(500).send("Error with this page.")
+    }
+};

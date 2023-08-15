@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Questrial&display=swap" rel="stylesheet">
+
+    <title>Edit your post</title>
+</head>
+<body>
+   <h1>Post Details</h1>
+
+   <form action="/updatePost/<%=post.postId%>" method="POST">
+    <input type="text" id="text" name="text" value="<%=post.text%>">
+    <button class="btn" type="submit" name="createPost">Update</button>
+   </form>
+
+   <a href="/profile">Back to my profile</a>
+</body>
+</html>
