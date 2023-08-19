@@ -44,7 +44,6 @@ body {
     border: none;
     border-radius: 90px;
     background-color: white;
-    position: relative;
 }
 
 .post h2 {
@@ -53,7 +52,9 @@ body {
 }
 
 .post-icons {
-    float: right;
+    display: flex;
+    justify-content: end;
+    margin-right: 40px;
 }
 
 @media (max-width: 767px) {
