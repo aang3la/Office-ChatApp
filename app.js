@@ -56,10 +56,10 @@ app.get("/register", viewHandler.getRegisterForm);
 app.get("/login", viewHandler.getLoginForm);
 app.get("/homepage", viewHandler.postsView);
 app.post("/createPost", viewHandler.createPost);
-app.get("/deletePost/:id", viewHandler.deletePost);
-app.get("/updatePost/:id", viewHandler.getPost);
-app.post("/updatePost/:id", viewHandler.updatePost);
 app.get("/profile", viewHandler.myProfile);
+app.get("/deletePost/:id", viewHandler.deletePost);
+app.get("/profile/:id", viewHandler.viewPostDetails);
+app.post("/updatePost/:id", viewHandler.updatePost);
 
 app.listen(process.env.PORT, (err) => {
     if(err){

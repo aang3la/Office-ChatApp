@@ -52,7 +52,6 @@ exports.postsView = async (req, res) => {
         let combined = [];
         for(let i = 0; i < posts.length; i++){
             let id = posts[i].author.toString();
-            //var author = findAuthorById(authors, id);
             let author = await User.findById(id);
             let post = posts[i];
             let newItem = {
@@ -89,17 +88,6 @@ exports.createPost = async (req, res) => {
         res.status(500).send(err);
     }
 };
-
-//* Update post
-exports.updatePost = async (req, res) => {
-    try{
-        await Post.findByIdAndUpdate(req.params.id, req.body);
-        res.redirect("/homepage/" + req.params.id);
-    }
-    catch(err){
-        res.status(500).send(err);
-    }
-}
 
 //* Delete post
 exports.deletePost = async (req, res) => {
@@ -142,16 +130,6 @@ exports.myProfile = async (req, res) => {
     }
 };
 
-exports.getPost = async (req, res) => {
-    try{
-        const postId = req.params.id;
-        res.redirect("/posts/" + postId);
-    }
-    catch(err){
-        res.status(500).send(err);
-    }
-}
-
 //* View post details
 exports.viewPostDetails = async (req, res) => {
     try{
@@ -171,3 +149,14 @@ exports.viewPostDetails = async (req, res) => {
         res.status(500).send("Error with this page.")
     }
 };
+
+//* Update post
+exports.updatePost = async (req, res) => {
+    try{
+        await Post.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect("/profile/" + req.params.id);
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+}
