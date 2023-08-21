@@ -39,15 +39,10 @@ exports.getLoginForm = (req, res) => {
     }
 };
 
-function findAuthorById(authors, authorId){
-    return authors.findOne(authorId);
-}
-
 //* Homepage
 exports.postsView = async (req, res) => {
     try{
         const posts = await Post.find();
-        //const authors = await User.find();
 
         let combined = [];
         for(let i = 0; i < posts.length; i++){
