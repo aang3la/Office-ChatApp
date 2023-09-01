@@ -4,6 +4,7 @@ const User = require("../pkg/users/userSchema");
 //* Packages
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const sendEmail = require("./emailHandler");
 
 //* Register function
 exports.register = async (req, res) => {
@@ -29,6 +30,13 @@ exports.register = async (req, res) => {
               ),
               secure: false,
               httpOnly: true,
+        });
+
+        //* Sending email after signup - register
+        await sendEmail({
+            email: newUser.email,
+            subject: "Thank you for the registration!",
+            message: "We thank you for the trust and support for choosing us."
         });
 
         res.status(201).json({

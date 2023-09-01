@@ -149,7 +149,7 @@ exports.viewPostDetails = async (req, res) => {
 exports.updatePost = async (req, res) => {
     try{
         await Post.findByIdAndUpdate(req.params.id, req.body);
-        res.redirect("/profile/" + req.params.id);
+        res.redirect("/profile");
     }
     catch(err){
         res.status(500).send(err);
