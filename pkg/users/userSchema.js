@@ -21,7 +21,9 @@ const userSchema = new mongoose.Schema({
         required: [true, "Password is required."],
         minlength: [8, "Password must be at least 8 charachters long."],
         validate: [validator.isStrongPassword, "Please provide a strong password."]
-    }
+    },
+    passwordResetToken: String,
+    passwordResetExpires: Date,
 });
 
 //* Middleware for hashing the password

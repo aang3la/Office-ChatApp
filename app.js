@@ -50,6 +50,9 @@ app.post("/mypost", postsHandler.createMyPost);
 app.patch("/posts/:id", postsHandler.updatePost);
 app.delete("/posts/:id", postsHandler.deletePost);
 
+app.post("/forgotPassword", authHandler.forgotPassword);
+app.patch("/resetPassword/:token", authHandler.resetPassword);
+
 //* View routes
 app.get("/default", viewHandler.getDefaultPage);
 app.get("/register", viewHandler.getRegisterForm);
@@ -60,6 +63,9 @@ app.get("/profile", viewHandler.myProfile);
 app.get("/deletePost/:id", viewHandler.deletePost);
 app.get("/profile/:id", viewHandler.viewPostDetails);
 app.post("/updatePost/:id", viewHandler.updatePost);
+
+app.get("/resetPassword/:token", viewHandler.formResetPassword);
+app.post("/resetPassword/:token", viewHandler.formResetPassword);
 
 app.listen(process.env.PORT, (err) => {
     if(err){

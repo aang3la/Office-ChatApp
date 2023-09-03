@@ -154,4 +154,20 @@ exports.updatePost = async (req, res) => {
     catch(err){
         res.status(500).send(err);
     }
-}
+};
+
+//* Reset password
+exports.formResetPassword = async (req, res) => {
+    try{
+        const token = req.params.token;
+
+        res.status(200).render("resetPassword", {
+            title: "Reset Password",
+            token,
+        });
+        res.redirect("/login");
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
+};
